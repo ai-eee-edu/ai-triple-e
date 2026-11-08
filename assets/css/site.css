@@ -45,3 +45,21 @@ input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#c14b45!import
 .rctc-prompt-result{background:#fff;max-width:850px;border:1px solid #d7e4df;padding:26px;border-radius:16px;margin:22px auto 0}
 .rctc-prompt-result .prompt-textarea{min-height:320px;margin-top:12px}
 @media(max-width:520px){.prompt-textarea{font-size:13px;min-height:350px}.rctc-prompt-result{padding:17px}}
+
+/* Responsive tutorial video integration */
+.guide-placeholder{display:block}
+.guide-placeholder #video-message{display:block;line-height:1.7;margin-bottom:8px}
+.guide-placeholder #video-message[hidden]{display:none}
+.module-video{width:100%;margin-top:4px}
+.video-embed-block{width:100%;max-width:760px;margin:0 auto}
+.video-embed-block iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:10px;background:#122f37}
+.video-youtube-link{display:inline-block;margin-top:12px;color:#165a69;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.video-sample-label{font-weight:700;color:#7a5810}
+.rctc-video-box{margin:22px 0;padding:20px;background:#f7fbfa;border:1px solid #d8e6e1;border-radius:14px}
+.rctc-video-box summary{cursor:pointer;color:#174b54;font-weight:800}
+.rctc-video-body{padding-top:17px}
+.rctc-video-status{font-size:13px;color:#55777e;margin-bottom:14px}
+@media (max-width:520px){.rctc-video-box{padding:15px}}
+
+/* Portrait mobile-screen recording: retain comfortable player size on desktop */
+.video-embed-block.is-portrait iframe{aspect-ratio:9/16;max-width:340px;max-height:600px;margin-left:auto;margin-right:auto}
