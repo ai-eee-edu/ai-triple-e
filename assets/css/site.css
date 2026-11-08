@@ -11,3 +11,37 @@
 @media(max-width:1050px){.wrap,.wrap--wide{width:min(100% - 40px,1180px)}.main-nav{gap:17px}.main-nav a{font-size:12px}.hero-grid{gap:32px}.module-shell{grid-template-columns:205px minmax(0,1fr);gap:25px}.result-grid{grid-template-columns:1fr 340px}.float-tag{right:1px}}@media(max-width:800px){:root{--navh:72px}.site-header{height:72px}.main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:16px 24px;flex-direction:column;align-items:stretch;gap:4px;box-shadow:0 14px 30px rgba(16,50,50,.07)}.main-nav.is-open{display:flex}.main-nav a{padding:12px;font-size:14px}.menu-btn{display:block}.header-actions .nav-btn{display:none}.hero-grid,.path-grid,.initiative-columns{grid-template-columns:1fr}.home-hero{padding:60px 0}.hero-visual{max-width:500px;margin-top:22px}.modules-grid{grid-template-columns:repeat(2,1fr)}.how-grid{grid-template-columns:repeat(2,1fr)}.module-shell{grid-template-columns:1fr;gap:0}.module-sidebar{position:static}.module-menu{display:none}.sidebar-help{display:none}.back-link{margin-bottom:22px}.module-header{margin-top:8px}.result-grid{grid-template-columns:1fr}.result-grid .result-card:nth-child(2){order:1}.footer-main{grid-template-columns:1.5fr 1fr}.timeline{grid-template-columns:1fr 1fr}}@media(max-width:520px){body{font-size:14px}.wrap,.wrap--wide{width:calc(100% - 34px)}.brand-mark{width:45px;height:38px}.brand-words strong{font-size:14px}.brand-words small{font-size:9px}.site-header{height:68px}:root{--navh:68px}.main-nav{top:68px}.section{padding:50px 0}.section--tight{padding:40px 0}.hero-copy h1{font-size:2.45rem}.lead{font-size:15px}.hero-eyebrow{font-size:9px}.hero-cta{display:grid;grid-template-columns:1fr}.hero-cta .btn{width:100%}.hero-support{gap:9px}.hero-support span{font-size:10px}.home-hero{padding:52px 0}.workbench{padding:20px 17px;border-radius:18px}.visual-halo{width:100%;height:100%}.workbench-head strong{font-size:14px}.float-tag{bottom:-17px;right:8px;padding:10px;font-size:10px}.path-card{padding:24px;min-height:0}.path-card h3{font-size:21px}.section-head{align-items:start;flex-direction:column}.section-head .btn{width:100%}.modules-grid{grid-template-columns:1fr 1fr;gap:10px}.module-card{padding:16px;min-height:214px}.module-card h3{font-size:14px}.module-card .sub{font-size:11px}.module-card-top{margin-bottom:15px}.module-card-icon{width:36px;height:36px}.how-grid{gap:7px}.how-step{padding-right:3px}.how-step h3{font-size:14px}.how-step p{font-size:12px}.ethics-inner{align-items:flex-start;flex-wrap:wrap}.ethics-inner .btn{margin:10px 0 0;width:100%}.footer-main{grid-template-columns:1fr 1fr;gap:22px}.footer-main>div:first-child{grid-column:1/-1}.page-head{padding:43px 0 26px}.module-shell{padding-top:30px}.module-header h1{font-size:2.1rem}.module-header p{font-size:13px}.language-toggle{margin-top:3px}.module-steps{gap:5px;margin:24px 0 15px}.module-step{padding:10px 8px;gap:5px;font-size:9px;flex-direction:column;text-align:center;border-radius:8px}.module-step .bubble{width:22px;height:22px;font-size:10px}.guide-trigger{padding:12px}.module-card-bar{padding:19px}.module-card-bar h2{font-size:20px}.form-content{padding:19px}.fields{grid-template-columns:1fr;gap:15px}.field.full{grid-column:auto}.form-actions{align-items:stretch;flex-direction:column-reverse}.form-actions .btn,.form-actions .action-right,.form-actions .action-right .btn{width:100%}.result-shell{padding:30px 0 60px}.result-top{flex-direction:column}.result-top h1{font-size:2.2rem}.result-card-head,.result-card-body{padding:18px}.prompt-textarea{min-height:430px;font-size:11px}.decision-row{gap:5px}.decision{font-size:10px;padding:10px 3px}.timeline{grid-template-columns:1fr}.info-panel{padding:18px}.filter-chip{font-size:11px;padding:7px 11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 [hidden]{display:none!important}
+
+/* Phase 2 enhancements: readable controls and conditional forms */
+.phase2-fields{padding:14px;border-radius:14px;background:#f8faf8;border:1px solid var(--line)}
+.phase2-error{margin:15px 0;padding:12px 14px;border-radius:11px;border:1px solid #b44f49;background:#fff4f0;color:#8a2f2d;font-weight:700;font-size:13px}
+.module-video{margin:14px 0 0}.module-video iframe,.module-video video{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#172f35;max-height:400px}
+.review-followup{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}.review-followup .hint{margin-top:9px}
+#task-minutes{min-height:48px}.phase2-fields .hint{font-size:11px}
+input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#c14b45!important}
+@media(max-width:520px){.phase2-fields{padding:12px}.module-video iframe,.module-video video{max-height:280px}}
+
+/* Toolkit-aligned readability */
+.prompt-textarea{font-family:"Noto Sans Bengali",Inter,system-ui,sans-serif;font-size:14px;line-height:1.85;letter-spacing:0;min-height:560px;}
+.review-check{font-size:13px;line-height:1.7;}
+
+/* Main toolkit reference sections. Also usable as direct deep links. */
+.teacher-guidance{scroll-margin-top:calc(var(--navh) + 18px)}
+.teaching-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.teaching-guide-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.teaching-guide-card{background:#fff;border:1px solid #ddebe6;border-radius:16px;padding:24px}
+.teaching-guide-card>span{display:block;color:#9a681b;font-size:12px;font-weight:800;letter-spacing:.07em;margin-bottom:10px}
+.teaching-guide-card h3{margin:0 0 8px;font-size:18px}
+.teaching-guide-card p{font-size:14px;line-height:1.75;margin:0}
+.teaching-guide-card .guide-example{margin-top:13px;background:#f3f8f5;padding:12px 14px;border-radius:9px;color:#244d54}
+.teacher-guide-footnote{font-size:13px;margin:20px 0;max-width:900px}
+@media(max-width:800px){.teaching-guide-grid--three{grid-template-columns:1fr}}
+@media(max-width:600px){.teaching-guide-grid,.teaching-guide-grid--three{grid-template-columns:1fr}.teaching-guide-card{padding:18px}.teacher-guidance .btn{white-space:normal;text-align:center}}
+
+/* Website 2.1 · source-faithful Bangla prompts, compact defaults */
+[hidden]{display:none!important}
+.prompt-textarea{font-family:"Noto Sans Bengali", "Noto Sans",system-ui,sans-serif;font-size:14px;line-height:1.85;min-height:310px;color:#184650}
+.rctc-form{max-width:850px;margin:20px auto 0}
+.rctc-prompt-result{background:#fff;max-width:850px;border:1px solid #d7e4df;padding:26px;border-radius:16px;margin:22px auto 0}
+.rctc-prompt-result .prompt-textarea{min-height:320px;margin-top:12px}
+@media(max-width:520px){.prompt-textarea{font-size:13px;min-height:350px}.rctc-prompt-result{padding:17px}}
