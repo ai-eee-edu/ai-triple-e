@@ -54,14 +54,52 @@
  let resourceInit=false;
  function drawSidebar(){$('sidebar-modules').innerHTML=TRIPLE_E.modules.map(m=>`<a href="${m.id}.html" class="${m.id===mod.id?'is-active':''}" ${m.id===mod.id?'aria-current="page"':''}><b>${m.no}</b><span>${safeText(txt(m.bn,m.en))}</span></a>`).join('')}
  function updateGuideSteps(){const draft=window.AI_TRIPLE_E_MODULES?.find(x=>x.id===mod.id);const steps=lang==='bn'?(mod.tutorialBn||[]):(mod.tutorialEn||mod.tutorialBn||[]);$('guide-steps').innerHTML=steps.map(x=>`<li>${safeText(x)}</li>`).join('')}
- function drawGuide(){updateGuideSteps();
-  const cfg=window.AI_TRIPLE_E_CONFIG?.videos?.[mod.id];const frame=$('module-video');
-  if(frame){frame.replaceChildren();const id=cfg?.youtubeId||'',mp4=cfg?.mp4||'';
-   if(/^[A-Za-z0-9_-]{11}$/.test(id)){
-     const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id;f.title=mod.en+' tutorial';f.loading='lazy';f.allow='accelerometer; encrypted-media; picture-in-picture';f.allowFullscreen=true;frame.append(f);$('video-message').hidden=true;
-   }else if(/^media\/videos\/[a-zA-Z0-9_-]+\.mp4$/.test(mp4)){
-     const v=document.createElement('video');v.controls=true;v.preload='none';v.src=mp4;frame.append(v);$('video-message').hidden=true;
-   }else{$('video-message').hidden=false;}
+ function drawGuide(){
+  updateGuideSteps();
+  const cfg = window.AI_TRIPLE_E_CONFIG || {};
+  const video = cfg.videos?.[mod.id] || {};
+  const frame = $('module-video');
+  const message = $('video-message');
+  if(!frame || !message) return;
+  frame.replaceChildren();
+  const isPreview = search.get('video-preview') === '1' && !video.youtubeId;
+  const id = (isPreview ? cfg.previewVideoId : video.youtubeId) || '';
+  const mp4 = video.mp4 || '';
+  message.hidden = false;
+  message.textContent = '';
+  if(/^[A-Za-z0-9_-]{11}$/.test(id)){
+    const box = document.createElement('div');
+    box.className = 'video-embed-block' + ((!isPreview && video.portrait) ? ' is-portrait' : '');
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?playsinline=1';
+    f.title = (isPreview ? 'Sample video player test' : mod.en + ' tutorial');
+    f.loading = 'lazy';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allow = 'accelerometer; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+    const a = document.createElement('a');
+    a.className = 'video-youtube-link';
+    a.href = 'https://www.youtube.com/watch?v=' + id;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = 'YouTube-এ দেখুন ↗';
+    box.appendChild(a);
+    frame.append(box);
+    if(isPreview){
+      message.textContent = 'পরীক্ষামূলক নমুনা ভিডিও। এটি AI Triple E-এর টিউটোরিয়াল নয়।';
+      message.classList.add('video-sample-label');
+    }else{
+      message.hidden = true;
+      message.classList.remove('video-sample-label');
+    }
+  }else if(/^media\/videos\/[a-zA-Z0-9_-]+\.mp4$/.test(mp4)){
+    const v = document.createElement('video');
+    v.controls = true;v.preload = 'none';v.src = mp4;v.playsInline = true;
+    frame.append(v);message.hidden = true;
+  }else{
+    message.textContent = 'ভিডিও টিউটোরিয়াল শিগগির যুক্ত হবে। নিচের লিখিত ধাপগুলো ব্যবহার করুন।';
+    message.classList.remove('video-sample-label');
   }
  }
  function adaptFields(){
@@ -97,7 +135,7 @@
   $('generate-prompt').innerHTML=txt('প্রম্পট তৈরি করুন','Generate prompt')+icon('arrow');
   $('demo-fill').textContent=txt('ডেমো তথ্য দিন','Fill sample');$('demo-fill-step1').textContent=txt('ডেমো পূরণ করুন','Fill sample');
   $('guide-title').textContent=txt('কীভাবে ব্যবহার করবেন?','How to use this module');$('guide-subtitle').textContent=txt('লিখিত নির্দেশনা ও ভিডিও (প্রকাশিত হলে)','Written guide and video (when published)');
-  $('video-message').textContent=txt('ভিডিওটি এখনও প্রকাশিত হয়নি। নিচের লিখিত ধাপগুলো ব্যবহার করুন।','Video not yet published. Use the written steps below.');
+  /* Video message controlled by drawGuide() for live, preview and unpublished states. */
   $('safety-text').textContent=txt('প্রম্পটটি টুলকিটের বাংলা RCTC অনুসারে তৈরি হবে। শিশুদের শনাক্তযোগ্য তথ্য লিখবেন না।','The prompt follows the Bangla toolkit template. Never enter child-identifying information.');
   $('task-minutes').placeholder=txt('যেমন: ১০','e.g. 10');
   $('module-eyebrow').textContent='MODULE '+mod.no+' / 04';
